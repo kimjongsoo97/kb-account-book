@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation project(':ScoulaCli')
+
     implementation 'org.springframework:spring-context:5.3.37'
     implementation 'org.springframework:spring-test:5.3.37'
     implementation 'com.opencsv:opencsv:5.5'

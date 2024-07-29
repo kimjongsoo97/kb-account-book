@@ -1,4 +1,2 @@
 rootProject.name = 'kb-account-book'
-include(':ScoulaCli')
-project(':ScoulaCli').projectDir =new File('C:\\fullstack\\04_Java\\ScoulaLib\\scoulacli')
 
