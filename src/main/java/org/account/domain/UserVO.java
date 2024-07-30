@@ -18,6 +18,7 @@ public class UserVO {
     private String role;
     private String email;
     private String birthYear;
+    private String region;
 
     public UserVO(String id) {
     }
