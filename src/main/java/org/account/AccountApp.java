@@ -33,7 +33,7 @@ public class AccountApp extends App {
         userMenu.add(new MenuItem("로그아웃", this::logout));
         userMenu.add(new MenuItem("종료", this::exit));
 
-        setMenu(anonymousMenu); // Default menu
+        setMenu(anonymousMenu);
     }
 
     private void exit() {
