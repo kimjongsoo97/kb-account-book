@@ -1,4 +1,4 @@
-package org.dao;
+package org.account.dao;
 
 public class AccountDao {
 }

@@ -1,11 +1,13 @@
-package org.domain;
+package org.account.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@Builder
 @AllArgsConstructor
 public class UserVO {
     private String id;
@@ -15,6 +17,7 @@ public class UserVO {
     private String gender;
     private String role;
     private String email;
+    private String birthYear;
 
     public UserVO(String id) {
     }
