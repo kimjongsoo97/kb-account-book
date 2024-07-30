@@ -16,7 +16,7 @@ public class UserDaoImpl implements UserDao {
     // SQL 쿼리문
     private static final String USER_LIST = "SELECT * FROM users";
     private static final String USER_GET = "SELECT * FROM users WHERE id=?";
-    private static final String USER_INSERT = "INSERT INTO users (id, password, name, role, gender, phoneNumber, email) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private static final String USER_INSERT = "INSERT INTO users (id, password, name, role, gender, phoneNumber, email,birthYear) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
     private static final String USER_UPDATE = "UPDATE users SET name=?, role=?, gender=?, phoneNumber=?, email=? WHERE id=?";
     private static final String USER_DELETE = "DELETE FROM users WHERE id=?";
 
@@ -31,6 +31,7 @@ public class UserDaoImpl implements UserDao {
             stmt.setString(5, user.getGender());
             stmt.setString(6, user.getPhoneNumber());
             stmt.setString(7, user.getEmail());
+            stmt.setString(8, user.getBirthYear());
             return stmt.executeUpdate();
         }
     }
@@ -44,6 +45,7 @@ public class UserDaoImpl implements UserDao {
                 .phoneNumber(rs.getString("phoneNumber"))
                 .role(rs.getString("role"))
                 .email(rs.getString("email"))
+                .birthYear(rs.getString("birthYear"))
                 .build();
     }
 
@@ -85,6 +87,7 @@ public class UserDaoImpl implements UserDao {
             stmt.setString(4, user.getPhoneNumber());
             stmt.setString(5, user.getEmail());
             stmt.setString(6, user.getId());
+            stmt.setString(7, user.getBirthYear());
             return stmt.executeUpdate();
         }
     }

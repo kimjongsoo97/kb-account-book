@@ -27,7 +27,7 @@ public class AccountApp extends App {
         anonymousMenu = new Menu();
         anonymousMenu.add(new MenuItem("로그인", this::login));
         anonymousMenu.add(new MenuItem("가입", accountService::join));
-        anonymousMenu.add(new MenuItem("종료", this::exit));
+//        anonymousMenu.add(new MenuItem("종료", this::exit));
 
         userMenu = new Menu();
         userMenu.add(new MenuItem("로그아웃", this::logout));
