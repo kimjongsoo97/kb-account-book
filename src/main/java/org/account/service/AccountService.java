@@ -43,6 +43,7 @@ public class AccountService {
         String gender = Input.getLine("성별: ");
         String phoneNumber=Input.getLine("핸드폰 번호: ");
         String email = Input.getLine("이메일 주소: ");
+        String birthYear=Input.getLine("생년월일 :");
         return new UserVO().builder()
                 .id(username)
                 .password(password)
@@ -51,6 +52,7 @@ public class AccountService {
                 .gender(gender)
                 .phoneNumber(phoneNumber)
                 .email(email)
+                .birthYear(birthYear)
                 .build();
     }
 }

@@ -16,8 +16,8 @@ public class UserDaoImpl implements UserDao {
     // SQL 쿼리문
     private static final String USER_LIST = "SELECT * FROM users";
     private static final String USER_GET = "SELECT * FROM users WHERE id=?";
-    private static final String USER_INSERT = "INSERT INTO users (id, password, name, role, gender, phone_number, email) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    private static final String USER_UPDATE = "UPDATE users SET name=?, role=?, gender=?, phone_number=?, email=? WHERE id=?";
+    private static final String USER_INSERT = "INSERT INTO users (id, password, name, role, gender, phoneNumber, email) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private static final String USER_UPDATE = "UPDATE users SET name=?, role=?, gender=?, phoneNumber=?, email=? WHERE id=?";
     private static final String USER_DELETE = "DELETE FROM users WHERE id=?";
 
     @Override
@@ -41,7 +41,7 @@ public class UserDaoImpl implements UserDao {
                 .password(rs.getString("password"))
                 .name(rs.getString("name"))
                 .gender(rs.getString("gender"))
-                .phoneNumber(rs.getString("phone_number"))
+                .phoneNumber(rs.getString("phoneNumber"))
                 .role(rs.getString("role"))
                 .email(rs.getString("email"))
                 .build();
