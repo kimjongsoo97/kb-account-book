@@ -21,4 +21,6 @@ public interface AccountDao {
     Map<String, Integer> getIncomeAndExpenseTotal(String userId, Date startDate, Date endDate) throws SQLException;
     boolean exists(String userId, Long id) throws SQLException;
     List<AccountVO> getListByUserIds(List<String> userIds) throws SQLException;
+
+
 }

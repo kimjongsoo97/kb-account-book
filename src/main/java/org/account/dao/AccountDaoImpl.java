@@ -32,7 +32,7 @@ public class AccountDaoImpl implements AccountDao {
         String sql = "INSERT INTO account (id, title, income, expense, description, date, userId) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = JDBCUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, account.getId());
+            stmt.setLong(1, account.getId());
             stmt.setString(2, account.getTitle());
             stmt.setObject(3, account.getIncome(), Types.INTEGER);
             stmt.setObject(4, account.getExpense(), Types.INTEGER);
@@ -45,7 +45,7 @@ public class AccountDaoImpl implements AccountDao {
 
     private AccountVO map(ResultSet rs) throws SQLException {
         AccountVO account = new AccountVO();
-        account.setId(rs.getString("id"));
+        account.setId(rs.getLong("id"));
         account.setTitle(rs.getString("title"));
         account.setIncome(rs.getObject("income", Integer.class));
         account.setExpense(rs.getObject("expense", Integer.class));
@@ -109,21 +109,23 @@ public class AccountDaoImpl implements AccountDao {
             }
         }
     }
-
-    @Override
-    public int update(String userId, AccountVO account) throws SQLException {
-        String sql = "UPDATE account SET title=?, description=?, expense=?, income=? WHERE userId=? AND id=?";
-        try (Connection conn = JDBCUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, account.getTitle());
-            stmt.setString(2, account.getDescription());
-            stmt.setObject(3, account.getExpense(), Types.INTEGER);
-            stmt.setObject(4, account.getIncome(), Types.INTEGER);
-            stmt.setString(5, userId);
-            stmt.setLong(6, Long.parseLong(account.getId()));
-            return stmt.executeUpdate();
+        @Override
+        public int update(String userId, AccountVO account) throws SQLException {
+            String sql = "UPDATE accounts SET title = ?, total = ?, income = ?, expense = ?, category = ?, description = ?, date = ? WHERE user_id = ? AND id = ?";
+            try (Connection connection = JDBCUtil.getConnection();
+                 PreparedStatement stmt = connection.prepareStatement(sql)) {
+                stmt.setString(1, account.getTitle());
+                stmt.setInt(2, account.getTotal());
+                stmt.setInt(3, account.getIncome());
+                stmt.setInt(4, account.getExpense());
+                stmt.setString(5, account.getCategory());
+                stmt.setString(6, account.getDescription());
+                stmt.setDate(7, new java.sql.Date(account.getDate().getTime()));
+                stmt.setString(8, userId);
+                stmt.setLong(9, account.getId());
+                return stmt.executeUpdate();
+            }
         }
-    }
 
     @Override
     public int delete(String userId, Long id) throws SQLException {

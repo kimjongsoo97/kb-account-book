@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 public class AccountVO {
-    private String id;
+    private Long id;
     private String title;
     private Integer total;
     private Integer income;
